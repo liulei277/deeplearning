@@ -1,0 +1,204 @@
+# 1.This file shows the parsed IR info when graph evaluating failed to help find the problem.
+# 2.You can search the last `------------------------>` to the node which is inferred failed.
+# 3.Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.dat to get more instructions.
+# ===============================================================================
+
+subgraph attr:
+subgraph instance: construct.Default_wrapper.212 : 0x55790fa561f0
+training : 0
+# In file /tmp/ipykernel_20911/2819648260.py:13/
+subgraph @construct.Default_wrapper.212(
+        %para1_x : <Tensor[Float32], (100)>
+        , %para2_fcout.bias : <Ref[Tensor(F32)], (1)>  :  has_default
+        , %para3_fcout.weight : <Ref[Tensor(F32)], (1, 32)>  :  has_default
+        , %para4_fc5.bias : <Ref[Tensor(F32)], (32)>  :  has_default
+        , %para5_fc5.weight : <Ref[Tensor(F32)], (32, 32)>  :  has_default
+        , %para6_fc4.bias : <Ref[Tensor(F32)], (32)>  :  has_default
+        , %para7_fc4.weight : <Ref[Tensor(F32)], (32, 32)>  :  has_default
+        , %para8_fc3.bias : <Ref[Tensor(F32)], (32)>  :  has_default
+        , %para9_fc3.weight : <Ref[Tensor(F32)], (32, 32)>  :  has_default
+        , %para10_fc2.bias : <Ref[Tensor(F32)], (32)>  :  has_default
+        , %para11_fc2.weight : <Ref[Tensor(F32)], (32, 32)>  :  has_default
+        , %para12_fc1.bias : <Ref[Tensor(F32)], (32)>  :  has_default
+        , %para13_fc1.weight : <Ref[Tensor(F32)], (32, 1)>  :  has_default
+    ) {
+
+#------------------------> 0
+  %1([CNode]216) = call @construct.Default.213(%para1_x)
+      :(<Tensor[Float32], (100)>) -> (<null>)
+      #scope: Default
+  Primitive::Return{prim_type=1}(%1)
+      :(<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:21/
+}
+# order:
+#   1: @construct.Default_wrapper.212:[CNode]216{[0]: ValueNode<FuncGraph> construct.Default.213, [1]: x}
+#   2: @construct.Default_wrapper.212:[CNode]217{[0]: ValueNode<Primitive> Return, [1]: [CNode]216}
+
+
+subgraph attr:
+subgraph instance: construct.Default.213 : 0x55790f4d1220
+training : 0
+# In file /tmp/ipykernel_20911/2819648260.py:13/
+subgraph @construct.Default.213 parent: [subgraph @construct.Default_wrapper.212](
+        %para14_x : <Tensor[Float32], (100)>
+    ) {
+
+#------------------------> 1
+  %1([CNode]218) = call @construct.Dense.214(%para14_x)
+      :(<Tensor[Float32], (100)>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:14/
+  %2(x) = DoSignaturePrimitive::S-Prim-Tanh{prim_type=1}[output_names=["y"], input_names=["x"]](%1)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:14/
+  %3([CNode]220) = call @construct.Dense.219(%2)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:15/
+  %4(x) = DoSignaturePrimitive::S-Prim-Tanh{prim_type=1}[output_names=["y"], input_names=["x"]](%3)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:15/
+  %5([CNode]222) = call @construct.Dense.221(%4)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:16/
+  %6(x) = DoSignaturePrimitive::S-Prim-Tanh{prim_type=1}[output_names=["y"], input_names=["x"]](%5)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:16/
+  %7([CNode]224) = call @construct.Dense.223(%6)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:17/
+  %8(x) = DoSignaturePrimitive::S-Prim-Tanh{prim_type=1}[output_names=["y"], input_names=["x"]](%7)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:17/
+  %9([CNode]226) = call @construct.Dense.225(%8)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:18/
+  %10(x) = DoSignaturePrimitive::S-Prim-Tanh{prim_type=1}[output_names=["y"], input_names=["x"]](%9)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:18/
+  %11(x) = call @construct.Dense.227(%10)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:19/
+  Primitive::Return{prim_type=1}(%11)
+      :(<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:21/
+}
+# order:
+#   1: @construct.Default.213:[CNode]218{[0]: ValueNode<FuncGraph> construct.Dense.214, [1]: x}
+#   2: @construct.Default.213:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Tanh, [1]: [CNode]218}
+#   3: @construct.Default.213:[CNode]220{[0]: ValueNode<FuncGraph> construct.Dense.219, [1]: x}
+#   4: @construct.Default.213:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Tanh, [1]: [CNode]220}
+#   5: @construct.Default.213:[CNode]222{[0]: ValueNode<FuncGraph> construct.Dense.221, [1]: x}
+#   6: @construct.Default.213:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Tanh, [1]: [CNode]222}
+#   7: @construct.Default.213:[CNode]224{[0]: ValueNode<FuncGraph> construct.Dense.223, [1]: x}
+#   8: @construct.Default.213:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Tanh, [1]: [CNode]224}
+#   9: @construct.Default.213:[CNode]226{[0]: ValueNode<FuncGraph> construct.Dense.225, [1]: x}
+#  10: @construct.Default.213:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Tanh, [1]: [CNode]226}
+#  11: @construct.Default.213:x{[0]: ValueNode<FuncGraph> construct.Dense.227, [1]: x}
+#  12: @construct.Default.213:[CNode]228{[0]: ValueNode<Primitive> Return, [1]: x}
+
+
+subgraph attr:
+subgraph instance: construct.Dense.214 : 0x557910312df0
+training : 0
+# In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:532/    def construct(self, x):/
+subgraph @construct.Dense.214 parent: [subgraph @construct.Default_wrapper.212](
+        %para15_x : <Tensor[Float32], (100)>
+    ) {
+
+#------------------------> 2
+  %1([CNode]229) = call @L-construct.Dense.215(%para15_x, %para12_fc1.bias, %para13_fc1.weight)
+      :(<Tensor[Float32], (100)>, <Ref[Tensor(F32)], (32)>, <Ref[Tensor(F32)], (32, 1)>) -> (<null>)
+      #scope: Default
+  Primitive::Return{prim_type=1}(%1)
+      :(<null>)
+      #scope: Default/fc1-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+}
+# order:
+#   1: @construct.Dense.214:[CNode]229{[0]: ValueNode<FuncGraph> L-construct.Dense.215, [1]: x, [2]: fc1.bias, [3]: fc1.weight}
+#   2: @construct.Dense.214:[CNode]230{[0]: ValueNode<Primitive> Return, [1]: [CNode]229}
+
+
+subgraph attr:
+subgraph instance: L-construct.Dense.215 : 0x5579113b67b0
+training : 0
+# In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:532/    def construct(self, x):/
+subgraph @L-construct.Dense.215(
+        %para16_x : <Tensor[Float32], (100)>
+        , %para17_ : <Ref[Tensor(F32)], (32)>
+        , %para18_ : <Ref[Tensor(F32)], (32, 1)>
+    ) {
+  %1(фx_shape) = DoSignaturePrimitive::S-Prim-Shape{prim_type=1}(%para16_x)
+      :(<Tensor[Float32], (100)>) -> (<Tuple[Int64], TupleShape(NoShape)>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:542/        if len(x_shape) != 2:/
+
+#------------------------> 3
+  %2(231) = DoSignaturePrimitive::S-Prim-check_dense_input_shape{prim_type=1}(%1, "Dense")
+      :(<Tuple[Int64], TupleShape(NoShape)>, <String, NoShape>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:534/        check_dense_input_shape(x_shape, self.cls_name)/
+  %3(232) = Primitive::stop_gradient{prim_type=1}(%2)
+      :(<null>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /tmp/ipykernel_20911/2819648260.py:19/
+  %4(234) = call @L-ms_len.233(%1)
+      :(<Tuple[Int64], TupleShape(NoShape)>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+  %5(235) = DoSignaturePrimitive::S-Prim-not_equal{prim_type=1}(%4, I64(2))
+      :(<null>, <null>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+  %6(237) = call @L-bool_.236(%5)
+      :(<null>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+  %7(238) = Primitive::Switch{prim_type=1}(%6, call @L-✓construct.Dense.239, call @L-✗construct.Dense.240)
+      :(<null>, <null>, <null>) -> (<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+  %8(241) = %7()
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+  %9(243) = call @L-↓construct.Dense.242(%8)
+      :(<null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:19/
+  %10(244) = Primitive::Depend{prim_type=1}[side_effect_propagate=I64(1)](%9, %3)
+      :(<null>, <null>) -> (<null>)
+      #scope: Default
+      # In file /tmp/ipykernel_20911/2819648260.py:19/
+  Primitive::Return{prim_type=1}(%10)
+      :(<null>)
+      #scope: Default/fcout-Dense
+      # In file /home/liulei/miniconda3/envs/py39/lib/python3.9/site-packages/mindspore/nn/layer/basic.py:535/        if len(x_shape) != 2:/
+}
+# order:
+#   1: @L-construct.Dense.215:фx_shape{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Shape, [1]: x}
+#   2: @L-construct.Dense.215:231{[0]: ValueNode<DoSignaturePrimitive> S-Prim-check_dense_input_shape, [1]: фx_shape, [2]: ValueNode<StringImm> Dense}
+#   3: @L-construct.Dense.215:234{[0]: ValueNode<FuncGraph> L-ms_len.233, [1]: фx_shape}
+#   4: @L-construct.Dense.215:235{[0]: ValueNode<DoSignaturePrimitive> S-Prim-not_equal, [1]: 234, [2]: ValueNode<Int64Imm> 2}
+#   5: @L-construct.Dense.215:237{[0]: ValueNode<FuncGraph> L-bool_.236, [1]: 235}
+#   6: @L-construct.Dense.215:238{[0]: ValueNode<Primitive> Switch, [1]: 237, [2]: ValueNode<FuncGraph> L-✓construct.Dense.239, [3]: ValueNode<FuncGraph> L-✗construct.Dense.240}
+#   7: @L-construct.Dense.215:241{[0]: 238}
+#   8: @L-construct.Dense.215:243{[0]: ValueNode<FuncGraph> L-↓construct.Dense.242, [1]: 241}
+#   9: @L-construct.Dense.215:244{[0]: ValueNode<Primitive> Depend, [1]: 243, [2]: 232}
+#  10: @L-construct.Dense.215:[CNode]245{[0]: ValueNode<Primitive> Return, [1]: 244}
+
+
+#===============================================================================
+# num of function graphs in stack: 4/5 (Ignored 1 internal frames).
